@@ -1,0 +1,28 @@
+name: kirana_club
+
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - kirana_club
+
+  image-job-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      MONGODB_URI: "mongodb://mongodb:27017"
+    volumes:
+      - ./docker_mounts/files:/app/files
+      - ./docker_mounts/logs:/app/logs
+    networks:
+      - kirana_club
+
+networks:
+  kirana_club:
+    driver: bridge
