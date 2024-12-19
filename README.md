@@ -5,6 +5,7 @@
 - Given that the number of images to be processed per job may be quite large, the actual job processing occurs asynchronously in the background.
 - Users receive a job ID when a job is successfully created, which they can use to query the job status at any time.
 - Additionally, users need to provide a list of valid Store IDs in the form of a CSV file.
+- I have implemented a message-broker-based architecture using RabbitMQ to decouple job processing from the main server. By offloading tasks to RabbitMQ queues, the main server remains responsive and unaffected by job execution
 
 # Endpoints
 
@@ -107,7 +108,7 @@ If a `store_id` does not exist or an image download fails for any given URL.
 # Installation Instructions
 
 Unzip the given zip file and `cd` into it.
-Make sure you have `docker` and `docker-compose` installed before proceeding.
+Make sure you have  RabbitMQ,`docker` and `docker-compose` installed before proceeding.
 
 
 
