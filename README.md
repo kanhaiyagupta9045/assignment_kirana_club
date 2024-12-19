@@ -151,11 +151,10 @@ Navigate to the project root.
 
 ### Setting Env Variable
 
-Before running any of the following methods, set the `MONGODB_URI` env variable using the following command (Linux):  
-`export MONGODB_URI=<value>` \
-Replace the `<value>` with the URI in your specific deployment. 
+Before running any of the following methods, ensure that the MONGODB_URL environment variable is properly configured.
+For a Windows setup, create an .env file in your project directory and define the MONGODB_URI key with your database connection string, like this:
 
-If you followed the MongoDB Docker setup above then use `export MONGODB_URI="mongodb://localhost:27017"              `
+If you followed the MongoDB Docker setup above then use `MONGODB_URI="mongodb://localhost:27017"              `
 
 ### Building the binary
 Run `go build ./cmd/main.go` to build the binary, optionally specifying the generated binary's name using the `-o` flag like `go build -o kirana_club ./cmd/main.go`
